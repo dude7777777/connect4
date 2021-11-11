@@ -1,16 +1,14 @@
-from gameboard import Gameboard
-from player import Player
+from actors.gameboard import Gameboard
+from actors.player import Player
 
 class Connect4:
 
-    def __init__(self):
-        self.players = [Player("Jacob"), Player("Computer")]
+    def __init__(self, player1):
+        self.players = [player1, Player("Computer", "Black")]
         self.activePlayer = self.players[1]
         self.gameboard = Gameboard()
         self.turn = 0
         self.isGameOver = False
-
-        self.startGame()
 
     def startGame(self):
         while not self.isGameOver:
@@ -24,12 +22,15 @@ class Connect4:
 
     def choosePlayer(self):
         self.activePlayer = self.players[self.turn%2]
+        print("Your turn, " + self.activePlayer.name)
 
     def takeTurn(self):
-        # choose drop location from keyboard
-        # check if valid spot
-        # subtract token from collection
-        self.turn=+1
+        dropLocation = input("Enter where you want to drop it [0-6]: ")
+        while not (self.gameboard.validateDropLocation(dropLocation)):
+            dropLocation = input("Enter where you want to drop it [0-6]: ")
+        self.gameboard.dropPiece(dropLocation, self.activePlayer)
+        self.turn+=1
 
     def checkVictoryCondition(self):
-        self.isGameOver = True
+        if (self.gameboard.isThereAConnect4()):
+            self.isGameOver = False

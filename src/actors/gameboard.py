@@ -12,5 +12,14 @@ class Gameboard:
         for i in range(0, len(self.data)):
             print(self.data[i])
 
-    def isGameOn(self):
+    def isThereAConnect4(self):
+        # TODO add logic
         return True
+    
+    def validateDropLocation(self, dropLocation):
+        # TODO add logic
+        return True
+
+    def dropPiece(self, dropLocation, player):
+        # TODO add logic
+        self.data[5][int(dropLocation)] = player.color
