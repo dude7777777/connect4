@@ -5,7 +5,7 @@ class Connect4:
 
     def __init__(self, player1):
         self.players = [player1, Player("Computer", "Black")]
-        self.activePlayer = self.players[1]
+        self.activePlayer = self.players[0]
         self.gameboard = Gameboard()
         self.turn = 0
         self.isGameOver = False
@@ -33,4 +33,4 @@ class Connect4:
 
     def checkVictoryCondition(self):
         if (self.gameboard.isThereAConnect4()):
-            self.isGameOver = False
+            self.isGameOver = True
