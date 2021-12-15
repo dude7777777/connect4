@@ -1,6 +1,5 @@
-from actors.gameboard import Gameboard
-from actors.player import Player
-from actors.connect4 import Connect4
+from src.actors.player import Player
+from src.actors.connect4 import Connect4
 
 def main():
     print("Welcome to Connect4")

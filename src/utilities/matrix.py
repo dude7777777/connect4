@@ -1,4 +1,4 @@
-from enums.directions import Directions
+from src.utilities.enums.directions import Directions
 
 class Matrix:
 
@@ -17,25 +17,25 @@ class Matrix:
                                 break
                     elif direction == Directions.DOWN:
                         #TODO code logic
-                        return
+                        return -1
                     elif direction == Directions.LEFT:
                         #TODO code logic
-                        return
+                        return -1
                     elif direction == Directions.RIGHT:
                         #TODO code logic
-                        return
+                        return -1
                     elif direction == Directions.UP_LEFT:
                         #TODO code logic
-                        return
+                        return -1
                     elif direction == Directions.UP_RIGHT:
                         #TODO code logic
-                        return
+                        return -1
                     elif direction == Directions.DOWN_LEFT:
                         #TODO code logic
-                        return
+                        return -1
                     elif direction == Directions.DOWN_RIGHT:
                         #TODO code logic
-                        return
+                        return -1
 
                     if newCount > count:
                         count = newCount

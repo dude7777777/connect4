@@ -1,5 +1,5 @@
-from actors.gameboard import Gameboard
-from actors.player import Player
+from src.actors.gameboard import Gameboard
+from src.actors.player import Player
 
 class Connect4:
 
@@ -15,6 +15,7 @@ class Connect4:
             self.choosePlayer()
             self.updateDisplay()
             self.takeTurn()
+            self.updateDisplay()
             self.checkVictoryCondition()
 
     def updateDisplay(self):
@@ -22,7 +23,7 @@ class Connect4:
 
     def choosePlayer(self):
         self.activePlayer = self.players[self.turn%2]
-        print("Your turn, " + self.activePlayer.name)
+        print("\nYour turn, " + self.activePlayer.name)
 
     def takeTurn(self):
         dropLocation = input("Enter where you want to drop it [0-6]: ")
@@ -32,5 +33,6 @@ class Connect4:
         self.turn+=1
 
     def checkVictoryCondition(self):
-        if (self.gameboard.isThereAConnect4()):
+        if (self.gameboard.isThereAConnect4(self.activePlayer.color)):
             self.isGameOver = True
+            print("Connect4!!! Winner: " + self.activePlayer.name)

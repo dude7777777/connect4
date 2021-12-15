@@ -1,3 +1,6 @@
+from src.utilities.matrix import Matrix
+from src.utilities.enums.directions import Directions
+
 class Gameboard:
 
     def __init__(self):
@@ -14,18 +17,14 @@ class Gameboard:
         for i in range(0, len(self.data)):
             print(self.data[i])
 
-    def isThereAConnect4(self):
-        #4 in a row
-        #right
-        #recursive(location, count, color, direction):
-           # if(color == nextColor):
-           #     count+=1
-           #     recursive(nextLocation, count, color, direction)
-        #up
-        #up-right
-        #up-left
-        # catsgame
-        return False
+    def isThereAConnect4(self, color):
+        return (
+            0 not in self.data[0] or
+            4 == Matrix.countCharsInDirection(direction=Directions.UP, matrix=self.data, target=color, maxCount=4) or
+            4 == Matrix.countCharsInDirection(direction=Directions.RIGHT, matrix=self.data, target=color, maxCount=4) or
+            4 == Matrix.countCharsInDirection(direction=Directions.UP_RIGHT, matrix=self.data, target=color, maxCount=4) or
+            4 == Matrix.countCharsInDirection(direction=Directions.DOWN_RIGHT, matrix=self.data, target=color, maxCount=4)
+        )
     
     def validateDropLocation(self, dropLocation):
         try:
