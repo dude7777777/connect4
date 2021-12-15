@@ -20,11 +20,14 @@ class Gameboard:
     def isThereAConnect4(self, color):
         return (
             0 not in self.data[0] or
-            4 == Matrix.countCharsInDirection(direction=Directions.UP, matrix=self.data, target=color, maxCount=4) or
-            4 == Matrix.countCharsInDirection(direction=Directions.RIGHT, matrix=self.data, target=color, maxCount=4) or
-            4 == Matrix.countCharsInDirection(direction=Directions.UP_RIGHT, matrix=self.data, target=color, maxCount=4) or
-            4 == Matrix.countCharsInDirection(direction=Directions.DOWN_RIGHT, matrix=self.data, target=color, maxCount=4)
+            4 == self.check(Directions.UP, color) or
+            4 == self.check(Directions.RIGHT, color) or
+            4 == self.check(Directions.UP_RIGHT, color) or
+            4 == self.check(Directions.DOWN_RIGHT, color)
         )
+    
+    def check(self, direction, color):
+        return Matrix.countCharsInDirection(direction=direction, matrix=self.data, target=color, maxCount=4)
     
     def validateDropLocation(self, dropLocation):
         try:
