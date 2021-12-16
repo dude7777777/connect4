@@ -1,11 +1,11 @@
 import enum
 
 class Directions(enum.Enum):
-    UP = "up"
-    DOWN = "down"
-    RIGHT = "right"
-    LEFT = "left"
-    UP_LEFT = "up_left"
-    UP_RIGHT = "up_right"
-    DOWN_LEFT = "down_left"
-    DOWN_RIGHT = "down_right"
+    UP = [-1, 0]
+    DOWN = [1, 0]
+    RIGHT = [0, 1]
+    LEFT = [0, -1]
+    UP_LEFT = [-1, -1]
+    UP_RIGHT = [-1, 1]
+    DOWN_LEFT = [1, -1]
+    DOWN_RIGHT = [1, 1]

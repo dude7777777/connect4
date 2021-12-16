@@ -4,38 +4,21 @@ class Matrix:
 
     def countCharsInDirection(matrix = [], target = '', direction = Directions.RIGHT, maxCount = -1):
         count = 0
+        direction = direction.value
         for i in range (0, len(matrix)):
             for j in range (0, len(matrix[i])):
+
                 if matrix[i][j] == target:
                     newCount = 1
-
-                    if direction == Directions.UP:
-                        for up in range (i-1, -1 or newCount == maxCount, -1):
-                            if matrix[up][j] == target:
-                                newCount +=1
-                            else:
-                                break
-                    elif direction == Directions.DOWN:
-                        #TODO code logic
-                        return -1
-                    elif direction == Directions.LEFT:
-                        #TODO code logic
-                        return -1
-                    elif direction == Directions.RIGHT:
-                        #TODO code logic
-                        return -1
-                    elif direction == Directions.UP_LEFT:
-                        #TODO code logic
-                        return -1
-                    elif direction == Directions.UP_RIGHT:
-                        #TODO code logic
-                        return -1
-                    elif direction == Directions.DOWN_LEFT:
-                        #TODO code logic
-                        return -1
-                    elif direction == Directions.DOWN_RIGHT:
-                        #TODO code logic
-                        return -1
+                    row = i
+                    column = j
+                    while (row+direction[0] < len(matrix) and column+direction[1] < len(matrix[0]) and newCount != maxCount):
+                        if matrix[row+direction[0]][column+direction[1]] == target:
+                            newCount +=1
+                            row += direction[0]
+                            column += direction[1]
+                        else:
+                            break
 
                     if newCount > count:
                         count = newCount
