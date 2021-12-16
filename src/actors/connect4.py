@@ -4,7 +4,7 @@ from src.actors.player import Player
 class Connect4:
 
     def __init__(self, player1):
-        self.players = [player1, Player("Computer", "Black")]
+        self.players = [player1, Player("Computer", "O")]
         self.activePlayer = self.players[0]
         self.gameboard = Gameboard()
         self.turn = 0
@@ -23,7 +23,7 @@ class Connect4:
 
     def choosePlayer(self):
         self.activePlayer = self.players[self.turn%2]
-        print("\nYour turn, " + self.activePlayer.name)
+        print("\nYour turn, " + self.activePlayer.name + ": " + self.activePlayer.color)
 
     def takeTurn(self):
         dropLocation = input("Enter where you want to drop it [0-6]: ")
@@ -36,3 +36,6 @@ class Connect4:
         if (self.gameboard.isThereAConnect4(self.activePlayer.color)):
             self.isGameOver = True
             print("Connect4!!! Winner: " + self.activePlayer.name)
+        elif (self.gameboard.isThereATie()):
+            self.isGameOver = True
+            print("Wow, it's a tie!")
